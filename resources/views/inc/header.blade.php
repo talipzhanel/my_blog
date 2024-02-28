@@ -8,7 +8,22 @@
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{route('home') }}">Главная страница</a>
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{route('about') }}">Про нас</a>
-      
+
+            @auth()
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{route('blog') }}">Написать блог</a>
+                <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{route('my-blog') }}">Мой блог</a>
+                <a class="p-2 text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    Выйти
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            @endauth
+
+            @guest()
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{route('login') }}">Логин</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{route('register') }}">Регистрация</a>
+            @endguest
         </nav>
     </div>
 </header>

@@ -13,6 +13,13 @@
 <body>
 @include('inc.header')
 @yield('content')
+
+@if(session('success'))
+    <div class="alert alert-success" style="margin-left: 10%; width: 500px;">
+        {{session('success') }}
+    </div>
+@endif
+
 @include('inc.footer')
 </body>
 </html>
